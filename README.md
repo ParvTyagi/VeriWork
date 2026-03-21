@@ -1,54 +1,244 @@
-# 📌 VeriWork
+# VeriWork
 
-**VeriWork** is a decentralized reputation and background verification system that enables secure, fast, and privacy-preserving validation of professional experience using blockchain and zero-knowledge proofs.
+> Privacy-first decentralized reputation and background verification system powered by blockchain and zero-knowledge proofs.
 
----
-
-## 🚀 Overview
-
-Traditional background verification systems are slow, centralized, and require access to sensitive personal data. VeriWork solves this by leveraging **blockchain, IPFS, and zk-SNARKs** to allow users to prove their work experience and performance **without revealing confidential information**.
-
----
-
-## ✨ Features
-
-- 🔐 Privacy-Preserving Verification using zk-SNARKs  
-- ⛓️ Immutable Records stored on blockchain  
-- 📦 Decentralized Storage with IPFS  
-- 🦊 Wallet-Based Authentication via MetaMask  
-- 📊 Reputation Score System based on verified work history  
-- ⚡ Faster Background Checks without manual verification  
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Network: Polygon Amoy](https://img.shields.io/badge/Network-Polygon%20Amoy-8247e5)](https://amoy.polygonscan.com/address/0x8E298092905e63477754ADaA23D47ceE54374667)
+[![Frontend: Vercel](https://img.shields.io/badge/Frontend-Vercel-black)](https://vercel.com)
+[![Storage: IPFS](https://img.shields.io/badge/Storage-IPFS%20%2F%20Pinata-65c2cb)](https://pinata.cloud)
 
 ---
 
-## 🧠 Tech Stack
+## Overview
 
-- **Frontend:** React  
-- **Blockchain:** Solidity (Ethereum / Polygon)  
-- **Storage:** IPFS (Pinata / Web3.Storage)  
-- **ZKP:** Circom + SnarkJS  
-- **Wallet:** MetaMask  
-- **Deployment:** Vercel, Render  
+VeriWork eliminates manual background verification by letting employers record work experience on-chain and workers prove their credentials to recruiters — without ever exposing sensitive data.
+
+Built with Ethereum smart contracts, IPFS decentralized storage, MetaMask authentication, and zk-SNARKs for zero-knowledge proof generation.
 
 ---
 
-## ⚙️ How It Works
+## Features
 
-1. **Employer Uploads Record**  
-   Work details (role, duration, rating) are uploaded to IPFS  
-
-2. **Blockchain Storage**  
-   IPFS hash is stored in a smart contract  
-
-3. **Reputation Calculation**  
-   System computes a credibility score  
-
-4. **ZK Proof Generation**  
-   User proves claims (e.g., rating ≥ 8) without revealing data  
-
-5. **Verification**  
-   Recruiter verifies proof on-chain  
+- **Privacy-preserving verification** — workers prove claims without revealing raw data
+- **Immutable records** — work history stored on Polygon blockchain
+- **Decentralized storage** — documents pinned to IPFS via Pinata
+- **Reputation scoring** — on-chain score calculated from verified records
+- **Role-based UI** — separate flows for Admin, Employer, Worker, and Recruiter
+- **Dark / Light theme** — DaisyUI powered theme switching
 
 ---
 
-## 🏗️ Project Structure
+## Tech Stack
+
+| Layer      | Technology                          |
+|------------|-------------------------------------|
+| Frontend   | React 18, Vite, TailwindCSS, DaisyUI |
+| Blockchain | Solidity 0.8.20, Hardhat, Ethers.js  |
+| Network    | Polygon Amoy Testnet                 |
+| Storage    | IPFS via Pinata                      |
+| ZKP        | Circom + SnarkJS (in progress)       |
+| Auth       | MetaMask                             |
+| Deploy     | Vercel (frontend), Polygon (contract)|
+
+---
+
+## Smart Contract
+
+Deployed on **Polygon Amoy Testnet**
+
+```
+0x8E298092905e63477754ADaA23D47ceE54374667
+```
+
+[View on Polygonscan ↗](https://amoy.polygonscan.com/address/0x8E298092905e63477754ADaA23D47ceE54374667)
+
+### Contract Functions
+
+| Function | Access | Description |
+|----------|--------|-------------|
+| `addEmployer(address)` | Admin | Register a company wallet |
+| `revokeEmployer(address)` | Admin | Remove employer access |
+| `submitRecord(...)` | Employer | Upload work record to chain |
+| `verifyRecord(id)` | Employer | Verify record and award reputation |
+| `verifyZKProof(...)` | Public | Verify a zk-SNARK proof on-chain |
+| `getWorkerRecordIds(address)` | Public | Fetch all record IDs for a worker |
+| `getReputation(address)` | Public | Get a worker's reputation score |
+
+---
+
+## How It Works
+
+```
+1. Admin registers employer wallets
+        ↓
+2. Employer uploads work record → IPFS → stores hash on blockchain
+        ↓
+3. Smart contract calculates reputation score
+        ↓
+4. Worker generates zero-knowledge proof  (rating ≥ threshold, etc.)
+        ↓
+5. Recruiter verifies proof on-chain — no raw data exposed
+```
+
+### Reputation Formula
+
+```
+Score = (rating × 10) + (months worked × 5)
+Max   = 200 points per record
+```
+
+---
+
+## Project Structure
+
+```
+VeriWork/
+├── blockchain/                 # Hardhat project
+│   ├── contracts/
+│   │   └── VeriWork.sol        # Main smart contract
+│   ├── ignition/modules/
+│   │   └── VeriWork.ts         # Deploy module
+│   ├── hardhat.config.ts
+│   └── .env                    # Private key + RPC (never commit)
+│
+└── frontend/                   # React + Vite app
+    ├── src/
+    │   ├── App.jsx              # Main app with role-based tabs
+    │   ├── context/
+    │   │   └── ThemeContext.jsx # Dark/light theme
+    │   └── components/
+    │       ├── RecordCard.jsx
+    │       ├── VerifyRecordWidget.jsx
+    │       └── ThemeToggle.jsx
+    ├── tailwind.config.js
+    └── .env                    # Contract address + Pinata keys
+```
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- MetaMask browser extension
+- Pinata account (free) — https://pinata.cloud
+- Test MATIC — https://faucet.polygon.technology
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/your-username/veriwork.git
+cd veriwork
+```
+
+### 2. Set up blockchain
+
+```bash
+cd blockchain
+npm install
+```
+
+Create `.env`:
+```
+PRIVATE_KEY=your_metamask_private_key
+AMOY_RPC_URL=https://rpc-amoy.polygon.technology
+```
+
+Compile and deploy:
+```bash
+npx hardhat compile
+npx hardhat ignition deploy ./ignition/modules/VeriWork.ts --network amoy
+```
+
+### 3. Set up frontend
+
+```bash
+cd frontend
+npm install
+```
+
+Create `.env`:
+```
+VITE_CONTRACT_ADDRESS=0xYourDeployedContractAddress
+VITE_PINATA_API_KEY=your_pinata_api_key
+VITE_PINATA_SECRET_API_KEY=your_pinata_secret_key
+```
+
+Run locally:
+```bash
+npm run dev
+```
+
+---
+
+## Deployment
+
+### Frontend → Vercel
+
+1. Push frontend folder to GitHub
+2. Import repo at https://vercel.com
+3. Set build command: `npm run build`
+4. Set output directory: `dist`
+5. Add environment variables in Vercel dashboard
+6. Deploy
+
+### Smart Contract → Polygon Amoy
+
+```bash
+cd blockchain
+npx hardhat ignition deploy ./ignition/modules/VeriWork.ts --network amoy
+```
+
+---
+
+## Environment Variables
+
+### blockchain/.env
+
+| Variable | Description |
+|----------|-------------|
+| `PRIVATE_KEY` | MetaMask wallet private key |
+| `AMOY_RPC_URL` | Polygon Amoy RPC endpoint |
+
+### frontend/.env
+
+| Variable | Description |
+|----------|-------------|
+| `VITE_CONTRACT_ADDRESS` | Deployed contract address |
+| `VITE_PINATA_API_KEY` | Pinata API key |
+| `VITE_PINATA_SECRET_API_KEY` | Pinata secret API key |
+
+---
+
+## Roadmap
+
+- [x] Smart contract with reputation system
+- [x] IPFS document storage via Pinata
+- [x] Role-based UI (Admin / Employer / Worker / Recruiter)
+- [x] Dark / Light theme
+- [x] Deployed on Polygon Amoy testnet
+- [ ] Circom circuit for zk-SNARK proof generation
+- [ ] On-chain proof verification via SnarkJS verifier
+- [ ] Multi-signature employer approval
+- [ ] Mainnet deployment
+
+---
+
+## Security
+
+- Only registered employer wallets can submit records
+- Admin wallet controls employer registration
+- Work documents stored on IPFS — only the hash is on-chain
+- Zero-knowledge proofs prevent raw data exposure to recruiters
+- Private keys are never stored in code — always use `.env`
+
+> **Never commit your `.env` file or private key to GitHub.**
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE)
+
+---
