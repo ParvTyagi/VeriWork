@@ -1,16 +1,54 @@
-# React + Vite
+# 📌 VeriWork
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**VeriWork** is a decentralized reputation and background verification system that enables secure, fast, and privacy-preserving validation of professional experience using blockchain and zero-knowledge proofs.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Overview
 
-## React Compiler
+Traditional background verification systems are slow, centralized, and require access to sensitive personal data. VeriWork solves this by leveraging **blockchain, IPFS, and zk-SNARKs** to allow users to prove their work experience and performance **without revealing confidential information**.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔐 Privacy-Preserving Verification using zk-SNARKs  
+- ⛓️ Immutable Records stored on blockchain  
+- 📦 Decentralized Storage with IPFS  
+- 🦊 Wallet-Based Authentication via MetaMask  
+- 📊 Reputation Score System based on verified work history  
+- ⚡ Faster Background Checks without manual verification  
+
+---
+
+## 🧠 Tech Stack
+
+- **Frontend:** React  
+- **Blockchain:** Solidity (Ethereum / Polygon)  
+- **Storage:** IPFS (Pinata / Web3.Storage)  
+- **ZKP:** Circom + SnarkJS  
+- **Wallet:** MetaMask  
+- **Deployment:** Vercel, Render  
+
+---
+
+## ⚙️ How It Works
+
+1. **Employer Uploads Record**  
+   Work details (role, duration, rating) are uploaded to IPFS  
+
+2. **Blockchain Storage**  
+   IPFS hash is stored in a smart contract  
+
+3. **Reputation Calculation**  
+   System computes a credibility score  
+
+4. **ZK Proof Generation**  
+   User proves claims (e.g., rating ≥ 8) without revealing data  
+
+5. **Verification**  
+   Recruiter verifies proof on-chain  
+
+---
+
+## 🏗️ Project Structure
