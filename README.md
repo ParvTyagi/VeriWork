@@ -3,7 +3,7 @@
 > Privacy-first decentralized reputation and background verification system powered by blockchain and zero-knowledge proofs.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Network: Polygon Amoy](https://img.shields.io/badge/Network-Polygon%20Amoy-8247e5)](https://amoy.polygonscan.com/address/0x8E298092905e63477754ADaA23D47ceE54374667)
+[![Network: Sepolia](https://img.shields.io/badge/Network-Sepolia-627eea)](https://sepolia.etherscan.io/address/0xC4C324b8B8bf5bA7B0bF13460E13BfBb577aBfA4)
 [![Frontend: Vercel](https://img.shields.io/badge/Frontend-Vercel-black)](https://vercel.com)
 [![Storage: IPFS](https://img.shields.io/badge/Storage-IPFS%20%2F%20Pinata-65c2cb)](https://pinata.cloud)
 
@@ -20,7 +20,7 @@ Built with Ethereum smart contracts, IPFS decentralized storage, MetaMask authen
 ## Features
 
 - **Privacy-preserving verification** — workers prove claims without revealing raw data
-- **Immutable records** — work history stored on Polygon blockchain
+- **Immutable records** — work history stored on Sepolia blockchain
 - **Decentralized storage** — documents pinned to IPFS via Pinata
 - **Reputation scoring** — on-chain score calculated from verified records
 - **Role-based UI** — separate flows for Admin, Employer, Worker, and Recruiter
@@ -34,23 +34,23 @@ Built with Ethereum smart contracts, IPFS decentralized storage, MetaMask authen
 |------------|-------------------------------------|
 | Frontend   | React 18, Vite, TailwindCSS, DaisyUI |
 | Blockchain | Solidity 0.8.20, Hardhat, Ethers.js  |
-| Network    | Polygon Amoy Testnet                 |
+| Network    | Sepolia Testnet                      |
 | Storage    | IPFS via Pinata                      |
 | ZKP        | Circom + SnarkJS (in progress)       |
 | Auth       | MetaMask                             |
-| Deploy     | Vercel (frontend), Polygon (contract)|
+| Deploy     | Vercel (frontend), Sepolia (contract)|
 
 ---
 
 ## Smart Contract
 
-Deployed on **Polygon Amoy Testnet**
+Deployed on **Sepolia Testnet**
 
 ```
-0x8E298092905e63477754ADaA23D47ceE54374667
+0xC4C324b8B8bf5bA7B0bF13460E13BfBb577aBfA4
 ```
 
-[View on Polygonscan ↗](https://amoy.polygonscan.com/address/0x8E298092905e63477754ADaA23D47ceE54374667)
+[View on Etherscan ↗](https://sepolia.etherscan.io/address/0xC4C324b8B8bf5bA7B0bF13460E13BfBb577aBfA4)
 
 ### Contract Functions
 
@@ -123,7 +123,7 @@ VeriWork/
 - Node.js 18+
 - MetaMask browser extension
 - Pinata account (free) — https://pinata.cloud
-- Test MATIC — https://faucet.polygon.technology
+- Sepolia ETH — https://sepoliafaucet.com
 
 ### 1. Clone the repo
 
@@ -142,13 +142,13 @@ npm install
 Create `.env`:
 ```
 PRIVATE_KEY=your_metamask_private_key
-AMOY_RPC_URL=https://rpc-amoy.polygon.technology
+ALCHEMY_SEPOLIA_URL=https://eth-sepolia.g.alchemy.com/v2/YOUR_KEY
 ```
 
 Compile and deploy:
 ```bash
 npx hardhat compile
-npx hardhat ignition deploy ./ignition/modules/VeriWork.ts --network amoy
+npx hardhat ignition deploy ./ignition/modules/VeriWork.ts --network sepolia
 ```
 
 ### 3. Set up frontend
@@ -183,11 +183,11 @@ npm run dev
 5. Add environment variables in Vercel dashboard
 6. Deploy
 
-### Smart Contract → Polygon Amoy
+### Smart Contract → Sepolia
 
 ```bash
 cd blockchain
-npx hardhat ignition deploy ./ignition/modules/VeriWork.ts --network amoy
+npx hardhat ignition deploy ./ignition/modules/VeriWork.ts --network sepolia
 ```
 
 ---
@@ -199,7 +199,7 @@ npx hardhat ignition deploy ./ignition/modules/VeriWork.ts --network amoy
 | Variable | Description |
 |----------|-------------|
 | `PRIVATE_KEY` | MetaMask wallet private key |
-| `AMOY_RPC_URL` | Polygon Amoy RPC endpoint |
+| `ALCHEMY_SEPOLIA_URL` | Sepolia RPC endpoint |
 
 ### frontend/.env
 
@@ -217,7 +217,7 @@ npx hardhat ignition deploy ./ignition/modules/VeriWork.ts --network amoy
 - [x] IPFS document storage via Pinata
 - [x] Role-based UI (Admin / Employer / Worker / Recruiter)
 - [x] Dark / Light theme
-- [x] Deployed on Polygon Amoy testnet
+- [x] Deployed on Sepolia testnet
 - [ ] Circom circuit for zk-SNARK proof generation
 - [ ] On-chain proof verification via SnarkJS verifier
 - [ ] Multi-signature employer approval

@@ -59,6 +59,7 @@ function VeriWorkApp() {
   // ── wallet ─────────────────────────────────────────────────────────────────
   const connectWallet = useCallback(async () => {
     if (!window.ethereum) return notify("Install MetaMask to continue.", "error");
+    
     try {
       const provider = new ethers.BrowserProvider(window.ethereum);
       const accounts = await provider.send("eth_requestAccounts", []);
@@ -219,7 +220,6 @@ function VeriWorkApp() {
 
   const scoreColor = (n) =>
     n >= 200 ? "text-success drop-shadow-[0_0_8px_rgba(54,211,153,0.5)]" : n >= 100 ? "text-primary" : "text-warning";
-
   // ── render ─────────────────────────────────────────────────────────────────
   return (
     <div className="min-h-screen bg-gradient-to-br from-base-200 via-base-100 to-base-300 flex flex-col font-sans transition-colors duration-300">
