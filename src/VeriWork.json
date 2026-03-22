@@ -14,44 +14,34 @@
       "type": "function"
     },
     {
-      "inputs": [],
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_verifier",
+          "type": "address"
+        }
+      ],
       "stateMutability": "nonpayable",
       "type": "constructor"
     },
     {
-      "inputs": [],
-      "name": "AlreadyVerified",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "InvalidAddress",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "InvalidRating",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "NotSubmittingEmployer",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "OnlyAdmin",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "OnlyEmployer",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "RecordDoesNotExist",
-      "type": "error"
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "oldAdmin",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "AdminTransferred",
+      "type": "event"
     },
     {
       "anonymous": false,
@@ -114,13 +104,13 @@
           "type": "address"
         },
         {
-          "indexed": true,
-          "internalType": "address",
-          "name": "employer",
-          "type": "address"
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newScore",
+          "type": "uint256"
         }
       ],
-      "name": "RecordCreated",
+      "name": "RecordAutoVerified",
       "type": "event"
     },
     {
@@ -139,13 +129,13 @@
           "type": "address"
         },
         {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "newScore",
-          "type": "uint256"
+          "indexed": true,
+          "internalType": "address",
+          "name": "employer",
+          "type": "address"
         }
       ],
-      "name": "RecordVerified",
+      "name": "RecordCreated",
       "type": "event"
     },
     {
@@ -179,12 +169,25 @@
           "type": "uint8"
         },
         {
-          "internalType": "uint32",
+          "internalType": "uint256",
           "name": "_durationDays",
-          "type": "uint32"
+          "type": "uint256"
         }
       ],
       "name": "submitRecord",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "transferAdmin",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -214,19 +217,6 @@
       ],
       "name": "VerifierUpdated",
       "type": "event"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "_recordId",
-          "type": "uint256"
-        }
-      ],
-      "name": "verifyRecord",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
     },
     {
       "inputs": [
@@ -384,14 +374,9 @@
           "type": "address"
         },
         {
-          "internalType": "uint64",
-          "name": "timestamp",
-          "type": "uint64"
-        },
-        {
-          "internalType": "uint32",
-          "name": "durationDays",
-          "type": "uint32"
+          "internalType": "string",
+          "name": "ipfsHash",
+          "type": "string"
         },
         {
           "internalType": "uint8",
@@ -399,14 +384,19 @@
           "type": "uint8"
         },
         {
+          "internalType": "uint256",
+          "name": "durationDays",
+          "type": "uint256"
+        },
+        {
           "internalType": "bool",
           "name": "isVerified",
           "type": "bool"
         },
         {
-          "internalType": "string",
-          "name": "ipfsHash",
-          "type": "string"
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
         }
       ],
       "stateMutability": "view",
