@@ -99,9 +99,9 @@ VeriWork/
 │   ├── ignition/modules/
 │   │   └── VeriWork.ts         # Deploy module
 │   ├── hardhat.config.ts
-│   └── .env                    # Private key + RPC (never commit)
+│   └── .env                    # Private key + RPC + verifier address
 │
-└── frontend/                   # React + Vite app
+└── client/                     # React + Vite app
     ├── src/
     │   ├── App.jsx              # Main app with role-based tabs
     │   ├── context/
@@ -110,8 +110,7 @@ VeriWork/
     │       ├── RecordCard.jsx
     │       ├── VerifyRecordWidget.jsx
     │       └── ThemeToggle.jsx
-    ├── tailwind.config.js
-    └── .env                    # Contract address + Pinata keys
+        └── .env                    # Contract address + upload proxy URL
 ```
 
 ---
@@ -143,6 +142,7 @@ Create `.env`:
 ```
 PRIVATE_KEY=your_metamask_private_key
 ALCHEMY_SEPOLIA_URL=https://eth-sepolia.g.alchemy.com/v2/YOUR_KEY
+VERIFIER_ADDRESS=0xDeployedVerifierAddress
 ```
 
 Compile and deploy:
@@ -161,9 +161,10 @@ npm install
 Create `.env`:
 ```
 VITE_CONTRACT_ADDRESS=0xYourDeployedContractAddress
-VITE_PINATA_API_KEY=your_pinata_api_key
-VITE_PINATA_SECRET_API_KEY=your_pinata_secret_key
+VITE_UPLOAD_API_URL=https://your-upload-proxy.example.com/api/upload
 ```
+
+Do not expose Pinata credentials in the browser. Use a server-side upload proxy for production.
 
 Run locally:
 ```bash

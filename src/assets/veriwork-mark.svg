@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 84" fill="none" role="img" aria-label="VeriWork mark">
+  <defs>
+    <linearGradient id="vw-mark-gradient" x1="10" y1="10" x2="74" y2="74" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4c7cf0" />
+      <stop offset="55%" stop-color="#48d5e2" />
+      <stop offset="100%" stop-color="#59ef7a" />
+    </linearGradient>
+  </defs>
+  <path d="M10 18L32 66L53 25L74 10L46 71L29 71L10 18Z" stroke="url(#vw-mark-gradient)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M27 28C33 20 44 20 49 26C53 31 53 38 47 43L34 55" stroke="url(#vw-mark-gradient)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

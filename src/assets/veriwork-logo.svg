@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 210" fill="none" role="img" aria-label="VeriWork logo">
+  <defs>
+    <linearGradient id="vw-wordmark-gradient" x1="18" y1="18" x2="150" y2="160" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4c7cf0" />
+      <stop offset="55%" stop-color="#48d5e2" />
+      <stop offset="100%" stop-color="#59ef7a" />
+    </linearGradient>
+  </defs>
+  <path d="M34 44L78 144L123 60L165 18L106 160L72 160L34 44Z" stroke="url(#vw-wordmark-gradient)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M71 63C84 49 101 48 113 61C123 72 123 89 110 101L84 128" stroke="url(#vw-wordmark-gradient)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="190" y="104" fill="currentColor" font-family="Bebas Neue, sans-serif" font-size="76" letter-spacing="1.5">VeriWork</text>
+  <text x="195" y="150" fill="currentColor" opacity="0.7" font-family="Rajdhani, sans-serif" font-size="26" letter-spacing="4">DECENTRALIZED REPUTATION PROTOCOL</text>
+</svg>
